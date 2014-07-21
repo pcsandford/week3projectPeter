@@ -1,0 +1,1417 @@
+
+
+ @import "normalize"; 
+
+/*Clearfix*/
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+/*Box sizing*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+//Vars
+
+$HYRed: #D12026;
+$LinkBlue: #26A6C9;
+$BackgroundBlue:#26A6C9;
+$HYGrey: #808285;
+$AsteriskBlue: #01B6D0;
+$Black: #323232;
+
+
+	/* Chrome, Safari, Opera */
+	@-webkit-keyframes lineOne {
+	0%   {left:10px; top:12px;}
+	100% {left:5px; top:16px; width:20px; -webkit-transform:rotate(45deg);;}
+	}
+	@keyframes lineOne {
+	0%   {left:10px; top:12px;}
+	100% {left:5px; top:16px; width:20px; -webkit-transform:rotate(45deg);;}
+	}
+
+	@-webkit-keyframes lineTwo {
+	0%   {left:10px; top:25px;}
+	100%  {left:5px; top:27px; width:20px; -webkit-transform:rotate(-45deg);}
+	}
+	@keyframes lineTwo {
+	0%   {left:10px; top:25px;}
+	100%  {left:5px; top:27px; width:20px; -webkit-transform:rotate(-45deg);}
+	}
+
+	@-webkit-keyframes lineThree {
+	0%   {left:10px; top:38px;}
+	100%  {left:22px; top:35px; width:20px;}
+	}
+	@keyframes lineThree {
+	0%   {left:10px; top:38px;}
+	100%  {left:22px; top:35px; width:20px;}
+	}
+
+	input[type="checkbox"]{
+	  display: none;
+	}
+
+	
+
+// Mixins
+
+@mixin nav-text {
+    font-family: "helvetica neue", helvetica;
+    font-size: 20px;
+    font-weight: 200;
+    color: black;
+    padding-right: 30px;
+    -webkit-transition: all 0.5s;
+
+    &:hover {
+    	cursor: pointer;
+    	color: $HYRed;
+    	-webkit-transition: all 0.5s;
+    }
+}//nav text
+
+@mixin column-header {
+    font-family: "helvetica neue", helvetica;
+    font-size: 22px;
+    font-weight: 200;
+    color: black;
+}
+
+@mixin column-text {
+	text-align: left;
+	margin-left: 0;
+	font-size: 14px;
+	font-weight: 200;
+	margin-bottom: 0;
+}
+
+@mixin link-text {
+	text-decoration: none;
+	color: $LinkBlue;
+	font-size: 14px;
+	&:hover {
+		cursor: pointer;
+	}
+}//link-text
+
+@mixin asterisk {
+	color: $AsteriskBlue;
+	
+}
+
+@mixin link2-text {
+	text-decoration: none;
+	color: $AsteriskBlue;
+	line-height: 1px;
+	font-weight: 200;
+	&:hover {
+		cursor: pointer;
+	}
+}//link2 text
+
+@mixin paragraph-text-spacing {
+	margin-left: 22px;
+}
+
+@mixin forward-slash {
+	color: $HYRed;
+	padding: 0 6px;
+}
+
+body {
+	background-image: url("assets/images/bg-forplacement.jpg");
+	background-repeat:no-repeat;
+	width:100%;
+	background-size: cover;
+	color:black;
+}
+
+//main wrapper
+
+.mainWrapper {
+	padding-top: 1px;
+	width: 100%;
+	max-width: 1140px;
+	margin: 0 auto;
+	position: relative;
+}
+
+//text area on left
+
+	.textArea {
+		position: relative;
+		width: 70%;
+		max-width: 788px;
+		background: white;
+		float: left;
+		margin-top: 0;
+		padding-top: 1px;
+		position: relative;
+		margin-bottom: 5px;
+
+
+	//main navigation bar with logo
+	
+		nav {
+			max-width: 788px;
+			width:100%;
+			position: relative;
+
+
+			.fixedNavWrapper,
+			.logo2Square,
+			.menuLine1,
+			.menuLine2,
+			.menuLine3,
+			.logo2Text {
+				display: none;
+			}
+
+			.hiddenMiniMenu {
+				display:none;
+			}
+	
+
+			.logo {
+				margin-top: 40px;
+				margin-left: 40px;
+				max-width: 165px;
+				float:left;
+				}
+	
+	
+
+			ul {
+				list-style: none;
+				text-decoration: none;
+				margin-top: 28px;
+				float:left;
+				margin-bottom: 50px;
+
+				li {
+					float:left;
+					background: white;
+					margin-left: 10px;
+					margin-top: 80px;
+
+					 a {
+					 	@include nav-text;
+					 	text-decoration: none;
+						}
+					}//li closing
+		
+				}//ul closing
+
+	.sub-menu {
+		display: none;
+		position: absolute;
+		background-color:black;
+		max-width: 400px;
+		margin: 0;
+		padding:5px 10px;
+		z-index:2000;
+    	left:225px;
+    	top:150px;
+		
+
+		li {
+			list-style: none;
+			float:center;
+			background: black;
+			margin-top: 8px;
+		}
+
+			 a{
+			@include nav-text;
+				 	color:white;
+				 	
+			}
+	}//sub-menu closing
+
+	//dropdown menu triange effect
+
+	.triangle {
+		position: absolute;
+		display: none;
+		z-index: 7;
+		left:90px;
+		top:-20px;
+		width: 0;
+		height: 0;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
+		border-bottom: 20px solid black;
+	}	
+
+
+	//hover effect for courses and dropdown menu
+	.courses {
+		
+		&:hover .sub-menu{
+				display:block;
+				z-index:7;	
+
+		.triangle{
+			display: block;
+				}	
+			}
+		}//course closing
+
+	
+}//nav closing
+
+//title text
+
+	h2 {
+		margin-left: 40px;
+		padding-top: 2%;
+		padding-right: 10%;
+		font-size: 48px;
+		clear:both;
+		font-family: "helvetica neue";
+		font-weight: 300;
+		position: relative;
+
+		span {
+			color: $HYRed;
+		}
+	}//h2 closing
+
+//main paragraph text
+
+	.mainParagraph {
+		background-color:white;
+		
+		p {
+		margin-left: 40px;
+		font-family: helvetica;
+		font-size: 22px;
+		font-weight: 100;
+		padding-right: 187px;
+		margin-bottom: 2%;
+		}
+}
+
+
+//columns divided into thirds
+
+	.third {
+		width: 165px;
+		float:left;
+		margin-left: 40px;
+		margin-bottom: 100px;
+		
+
+//colum headers
+
+		h3 {
+			@include column-header;
+		}
+
+//column text
+
+		p {
+			@include column-text;
+		}
+
+		.greyArrow {
+			padding-right: 5px;
+			padding-top:10px;
+			margin-bottom: 10px;
+			float:left
+		}
+
+//column links	
+
+		.paragraphLink {
+			padding-top: 0;
+
+			a {
+			@include link-text;
+			}
+		}
+
+		.link{
+			padding-top: 10px;
+		}	
+
+		.link a {
+			@include link-text;
+		}
+
+
+//colum sub-header		
+
+		h4 {
+			font-weight: 200;
+			font-size: 12px;
+		}
+
+//email input and submit button		
+
+		.email {
+			width:165px;
+			height:25px;
+			background-image: url(assets/images/icon-mailing.png);
+			background-repeat: no-repeat;
+			background-color: #D1D3D4;
+			background-position: 140px 5px;
+			border-style: none;
+			font-size:11px;
+			font-weight: 500;
+			letter-spacing: 1px;
+			padding-left: 5px;
+			margin-top: 5px;
+			border:none;
+			&:focus {
+				border:1px solid black;
+			}
+}//email closing
+
+		.submitButton {
+			border-style: none;
+			background-color: $BackgroundBlue;
+			color:white;
+			font-size: 11px;
+			font-weight: 500;
+			letter-spacing: 1px;
+			padding:5px 4px;
+			margin-top: 10px;
+
+			&:hover {
+				background-color: darken($BackgroundBlue,10);
+			}
+		}//submit button closing
+}//thirds column area closing
+	
+}//text area closing
+
+//sidebar on right
+
+	.sidebar {
+		width: 30%;
+		max-width: 352px;
+		background: fade-out($Black,0.3);
+		float: left;
+		position: relative;
+
+//picture at top of sidebar	
+
+		.topLeftPicture {
+			width:100%;
+			max-width: 352px;
+			margin:0;
+			}
+
+
+
+//login box-absolute position
+			.loginBox {
+				display:none;
+				position: fixed;
+				padding:10px;
+				width:200px;
+				background:white;
+				right:330px;
+				top:70px;
+
+					.emailAddress {
+					
+						width:165px;
+						height:20px;
+						background-color: #D1D3D4;
+						background-position: 140px 3px;
+						border-style: none;
+						font-size:11px;
+						font-weight: 500;
+						letter-spacing: 1px;
+						padding-left: 5px;
+						margin-bottom:7px;
+						margin-top: 0px;
+						border:none;
+						&:focus {
+							border:1px solid black;
+						}
+			}//email address closing
+
+					.password {
+						width:165px;
+						height:20px;
+						background-color: #D1D3D4;
+						background-position: 140px 3px;
+						border-style: none;
+						font-size:11px;
+						font-weight: 500;
+						letter-spacing: 1px;
+						padding-left: 5px;
+						margin-top: 0px;
+						border:none;
+						&:focus {
+							border:1px solid black;
+						}
+
+					}
+					.loginButton {
+						border-style: none;
+						background-color: $BackgroundBlue;
+						color:white;
+						font-size: 11px;
+						font-weight: 500;
+						letter-spacing: 1px;
+						padding:5px 4px;
+						margin-top: 10px;
+						max-width:50px;
+						width:50%;
+						float:left;
+
+						&:hover {
+							cursor: pointer;
+							background-color: darken($BackgroundBlue,10);
+
+						}
+					}//login button closing
+
+					p {
+						@include link-text;
+						font-size: 12px;
+						float: left;
+						padding: 2px 5px 2px 10px;
+					}
+				}//login box closing
+
+//fixed navigation button - apply		
+
+			.fixedNavApply {
+				position: fixed;
+				padding: 20px 20px;
+				margin-top: -1px;
+				font-size: 20px;
+				font-weight: 200;
+				color: white;
+				background-color: $HYRed;
+				z-index:7;
+
+					&:hover {
+						cursor: pointer;
+						color: $HYGrey;
+					}
+			}
+
+		//fixed navigation login button
+
+			.fixedNavLogin {
+				position: fixed;
+				padding: 19px 30px;
+				padding-right: 35px;
+				font-size: 20px;
+				font-weight: 200;
+				margin-left:-95px;
+				box-shadow:5px 0 0 0 white;
+				color: $HYGrey;
+				background-color: white;
+				z-index:7;
+
+					.loginArrow {
+						opacity: 0;
+					}
+
+					&:hover {
+						cursor: pointer;
+						color: $HYRed;
+
+						.loginArrow {
+							opacity:1;
+						}
+
+						~ .loginBox{
+						display:block
+					}
+					}
+				}//fixed login close
+
+//subheader section
+
+	.subheader {
+		float:left;
+		width:100%;
+		max-width:352px;
+		// background-color:red;
+
+//headline		
+		.title {
+			max-width: 250px;
+			width:60%;
+			// background-color:green;
+			position: relative;
+			float:left;
+			margin:0 0 0 22px;
+
+			h3 {
+				color:white;
+				font-size: 30px;
+				font-weight: 100;
+				font-family: "helvetica neue";
+
+				
+				//asterisk
+				span {
+					@include asterisk;
+					font-size: 40px;
+					font-weight: 300;
+					float:none;
+				}
+			}
+
+//sub-header		
+
+			h4 {
+				color:$HYGrey;
+				font-size: 10px;
+				font-weight: 200;
+				font-family: "helvetica neue";
+				margin:0;
+				padding:0;
+				letter-spacing: 1px;
+	}
+		}//close title div
+
+
+//date information container
+
+		.dateContainer {
+			float:left;
+			font-family: "helvetica";
+			text-align: center;
+			width:30%;
+			position: relative;
+
+			ul { 
+				text-align: center;
+				margin-left: 0;
+				padding:0;
+				
+				li {
+					color:$HYGrey;
+					font-size: 12px;
+					font-weight: 200px;
+					letter-spacing: 1px;
+					list-style: none;
+					text-align: center;
+				}
+			}//ul closing
+
+			.month {
+				font-size: 26px;
+				letter-spacing: 0;
+				color:white;
+				font-weight: 200;
+			}
+
+			.day {
+				font-size: 48px;
+				font-weight: 200;
+				color:white;
+			}
+
+			.year {
+				font-size: 15px;
+				text-align: center;
+				}
+			}//date container closing	
+	}//subheader closing
+
+//main text paragraph in sidebar
+
+	.mainSidebarParagraph {
+		@include paragraph-text-spacing;
+				font-family: "helvetica";
+				color:white;
+				font-weight:200;
+				margin-right:22px;
+				margin-top: 20px;
+				font-size: 14px;
+				border-top:4px solid $HYGrey;
+				float:left;
+		
+		.link2 {
+			@include link2-text;
+			}
+	}//main sidebar paragraph closing
+
+
+//instructor information
+
+	.wesInfo {
+		float:left;
+		width:88%;
+		color:white;
+		margin-left: 22px;
+		border-bottom: 3px $HYGrey solid;
+		
+//image of instructor
+
+		.instructorImage {
+			float:left;
+			clear:both;
+			margin-right:22px;
+		}
+	
+
+		h3 {
+			margin:0;
+			font-weight: 200;
+			font-size: 16px;
+		}
+
+		.link2 {
+			@include link2-text;
+			font-size: 14px;
+			padding:6px 0;
+
+			a {
+				text-decoration: none;
+				color:$LinkBlue;
+				line-height: 2px;
+				margin-top: 0;
+			}
+		}//link2 closing
+	
+	
+		.asterisk {
+			@include asterisk;
+			padding-top:6px;
+			float:left;
+			}
+
+		.quote {
+			float:left;
+			font-size: 11px;
+			font-weight: 200;
+			color:$HYGrey;
+			margin:0;
+			}
+
+}//wes info closing
+
+//questions? section
+
+	.questionsLinks {
+		float:left;
+		max-width: 352px;
+		width:100%;
+		margin-top: 10px;
+
+		h2 {
+			color:white;
+			font-size: 30px;
+			font-weight: 300;
+			margin-left: 22px;
+			margin-top: 30px;
+			max-width: 190px;
+			}
+
+		ul li {
+			list-style: none;
+			
+			a {
+				color:white;
+			text-decoration: none;
+			background-color: $BackgroundBlue;
+			padding: 8px 3px;
+			line-height: 32px;
+			font-weight: 200;
+			font-size: 14px;
+			margin-left: -20px;
+
+				&:hover {
+					background-color: darken($BackgroundBlue,10)
+				}
+			}
+		}
+	}//questions links closing
+} //sidebar closing
+
+//footer section
+
+	footer {
+		clear:both;
+		background: fade-out($Black,0.3);
+		color:$HYGrey;
+		width:70%;
+		max-width: 788px;
+		overflow: hidden;
+		margin-bottom: 40px;
+
+//footer nav menu	
+	
+		.footerNav {
+			float:left;
+
+			ul li {
+				list-style: none;
+				float:left;
+				margin-right:10px;
+
+			svg {
+				width:30px;
+				height:30px;
+				fill:$HYGrey;
+				-webkit-transition: all 0.5s;
+
+					&:hover {
+					fill:white;
+					-webkit-transition: all 0.5s;
+					}
+				}
+				}	
+		}//footerNav closing
+
+
+//legal and info section	
+
+	.legal {
+		float:left;
+		max-width: 500px;
+		margin-bottom: 20px;
+
+		p {
+			margin:0;
+			font-size: 15px;
+		}
+		
+		.copyright {
+			padding:10px;
+		}
+
+		.address {
+			margin-left:10px;
+		}
+
+		.terms {
+			margin-left:10px;
+
+		}
+		
+		.forwardSlash {
+			@include forward-slash;
+		}
+	}//legal closing	
+}//footer closing
+
+
+// ================================================================================
+// BREAK POINTS
+// ================================================================================
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+
+
+//main text area on left
+	.textArea {
+		max-width: 880px;
+		width:100%;
+		margin-right:60px;
+		margin-bottom: 0px;
+
+		.third {
+			margin-left: 60px;
+		}
+	}//textArea closing
+
+//fixed navigation buttons	
+
+	.fixedNavApply {
+		top:0;
+		right:0;
+	}
+
+	.fixedNavLogin {
+		top:0;
+		right:90px;
+	}
+
+//sidebar
+
+	.sidebar {
+		float:none;
+		max-width: 880px;
+		width:100%;
+		max-height: 600px;
+		height:100%;
+		margin-right:60px;
+		margin-top: 0px;
+		overflow: hidden;
+
+//login box - static position		
+
+		.loginBox {
+			right:160px;
+			top:70px;
+		}
+
+		.topLeftPicture {
+			float:left;
+			max-width: 300px;
+			width:100%;
+		}
+
+//subheader
+
+		.subheader {
+			float:left;
+			width:100%;
+			max-width: 400px;
+			margin-bottom: 29px;
+
+		.title h4 {
+			font-size: 16px;
+			margin-top: 5px;
+		}
+
+
+
+		.dateContainer {
+			float:left;
+			margin-top: 20px;
+			margin:left0;
+			width:100%;
+			max-width: 100px;
+			font-family: "helvetica";
+			text-align: center;
+			font-size: 18px;
+
+			.month {
+				letter-spacing: 0;
+				color:white;
+				font-weight: 200;
+			}
+
+			.day {
+				font-weight: 200;
+				color:white;
+			}
+
+			.year {
+				text-align: center;
+			}
+		}//dateContainer close
+		}//subheader close
+
+
+//main paragraph in sidebar
+		
+		.mainSidebarParagraph {
+			clear:both;
+			max-width: 300px;
+			width:100%;
+			border-top: none;
+			margin-left:22px;
+			margin-top: 22px;
+			padding-right: 22px;
+
+			p {
+				margin-top: 0;
+			}
+		}//mainSidebarParagraph close
+			
+//wes bos info
+
+		.wesInfo {
+			margin-top: 22px;
+			margin-left:0;
+			padding: 0;
+			width:50%;
+			max-width: 280px;
+			border-bottom:transparent;
+
+			.instructorImage {
+				margin-right:22px;
+				padding:0;
+			}
+		
+			.quote p{
+				float:left;
+				margin: 0;
+				padding: 10px 0;
+				max-width: 300px;
+				width:100%;
+			}
+		}//wesinfo close
+
+//questions section
+
+		.questionsLinks {
+			float:left;
+			max-width: 100px;
+			width:100%;
+			padding: 0;
+			margin-left:0;
+
+			h2{
+				margin-left:-22px;
+				margin-bottom: 6px;
+				margin-top: 11px;
+				padding: 0;
+			}
+
+			ul {
+				float:left;
+				max-width: 300px;
+				width:100%;
+				margin-top: 22px;
+				margin-left: 0;
+				padding-left: 0px;
+			}
+		}//questions section close	
+	}//sidebar close
+
+//footer sections
+
+	footer {
+		max-width: 880px;
+		width:100%;
+		border-top: 3px solid $HYGrey;
+
+		.legal {
+			float:left;
+			margin-left: 60px;
+			max-width: 500px;
+			width:70%;
+		}
+	}//footer closing
+}//max-width 940px section closing
+
+
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+
+	.textArea {
+		background-color:white;
+		color:black;
+
+		nav {
+			max-width: 788px;
+			width:100%;
+			position: relative;
+			padding: 0;
+			margin:0;
+
+//tablet and mobile nav set-up
+			.fixedNavWrapper,
+			.logo2Square,
+			.menuLine1,
+			.menuLine2,
+			.menuLine3,
+			.logo2Text {
+				display: block;
+			}
+
+//for dropdown nav operation
+		.logo2Square[for="toggle1"]{
+	  		cursor: pointer;
+			}
+
+		.fixedNavWrapper{
+			position: fixed;
+			max-width: 768px;
+			width:100%;
+			height:55px;
+			background-color:white;
+			margin-top: -5px;
+			z-index:7;
+	
+		.logo2Text {
+			font-size: 26px;
+			font-weight:bold;
+			margin-bottom: 0px;
+			margin-top: -8px;
+			margin-left: 60px;
+			float:left;
+			max-width: 100px;
+			position: fixed;
+			}
+
+		.logo2Square{
+			margin-bottom: -10px;
+			margin-top: -1px;
+			max-width: 100px;
+			float:left;
+			position: fixed;
+
+//hackerYou menu switch animation
+
+		 	&:hover .menuLine1{
+   				-webkit-transform:all 0.7s;
+			    -webkit-animation: lineOne 0.7s; 
+   				 animation: lineOne 0.7s;
+   				-webkit-animation-iteration-count: 1;
+   				-webkit-animation-fill-mode: forwards;
+   			}
+
+   			&:hover .menuLine2{
+   				-webkit-transform:all 0.7s;
+   				-webkit-animation:lineTwo 0.7s;
+   				animation:lineTwo 0.7s;
+   			    -webkit-animation-iteration-count: 1;
+   			    -webkit-animation-fill-mode: forwards;
+   			}
+
+   			&:hover .menuLine3{
+   				-webkit-transform:all 0.7s;
+				-webkit-animation:lineThree 0.7s;
+				animation:lineTwo 0.7s;
+		      	-webkit-animation-iteration-count: 1;
+		      	-webkit-animation-fill-mode: forwards;
+   			}
+
+		.menuLine1,
+		.menuLine2,
+		.menuLine3 {
+			height:4px;
+			width:30px;
+			background-color:white;
+			position: absolute;
+			}
+		}//logo2Square closing
+
+
+//initial position of animation elements
+		.logo2Square .menuLine1 {
+			top:12px;
+			left:10px;
+			}
+
+		.menuLine2 {
+			top:25px;
+			left:10px;
+			}
+
+		.menuLine3 {
+			top:38px;
+			left:10px;
+			}
+		}// fixed nav wrapper closing
+
+//clear out the courses sub-menu
+		.courses {
+			&:hover .sub-menu {
+			display: none;
+			}
+		}
+ 
+//display new nav menu
+
+		.hiddenMiniMenu {
+			display:block;
+			margin-left: 22px;
+			padding-top:5px;
+			padding-bottom: 5px;
+		}
+	
+//clear old logo
+		.logo {
+			display:none;
+		}
+	
+		ul {
+			list-style: none;
+			text-decoration: none;
+			margin-top:0;
+			padding-top:50px;
+			float:none;
+			clear:both;
+			padding: 0;	
+
+			li:nth-child(1){
+				padding-top:80px;	
+			}
+			
+			li {
+				float:none;
+				background: white;
+				margin:0;
+				padding: 20px 20px;
+				border-bottom: 2px solid $HYGrey;
+
+				ul.sub-menu {
+					display: none;
+					list-style: none;
+					position: relative;
+					left:0;
+					top:0;
+					padding-left: -20;
+					width:768px;
+				}
+			}
+
+//hide triangle
+
+			 .triangle{
+				opacity: 0;	
+			}	
+		}//ul closing
+	}//nav closing
+
+//trigger for dropdown menu - couldn't get this to work but will look over my code next week and see if I can fix it
+//i think it has something to do with me mixing up parent-child relationships in the different stages of the site 
+//and in sass. not that I am blaming sass, it's awesome!
+
+	.logo2Square {
+		input.cb1:checked ~ nav ul {
+		margin-top: 0px;
+		}
+	}
+
+	.mainParagraph p{
+		margin-left: 22px;
+		padding-right: 22px;
+	}
+
+
+	.third {
+		max-width: 768px;
+		width:100%;
+		margin:0;
+		padding:5px 22px;
+		border-top: 2px solid $HYGrey;
+		}
+
+
+	.mailingList {
+		padding-bottom: 20px;
+	}
+	}//text area closing
+
+	
+	.sidebar {
+		.loginBox {
+			right:120px;
+			top:55px;
+		}
+
+	.fixedNavLogin {
+		padding: 15px;
+		margin-top: -1px;
+	}
+
+	.fixedNavApply {
+		padding: 15px;
+	}
+
+	.topLeftPicture {
+		display:none;
+	}
+
+	.subheader {
+		float:left;
+		max-width: 768px;
+		width:100%;
+		margin-bottom:5px;
+	}
+
+	.mainSidebarParagraph {
+		clear:both;
+		max-width:768px;
+		width:100%;
+		border-top: none;
+		padding-left:22px;
+		margin-left: 0px;
+		float:left;
+		border-bottom:3px solid $HYGrey;
+		
+		p {
+			margin: 0;
+			padding-bottom:20px;
+			float:left;
+		}
+	}
+
+//wes bos info
+		.wesInfo {
+			padding-left: 22px;
+			margin-right: 0px;
+			padding-top: 20px;
+			width:50%;
+			max-width: 300px;
+				
+			.instructorImage {
+				margin-right:22px;
+				padding:0;
+			}
+
+			.link2 a{
+				width:50%;
+				padding-left:0px;
+				margin-top: 0px;
+			}
+
+			.asterisk {
+				float:left;
+				margin: 0;
+				padding: 0;
+			}
+
+			.quote {
+				float:left;
+				border-bottom:transparent;
+				margin-top:-22px;
+				padding-left:10px;
+				max-width: 300px;
+				width:100%;
+			}
+		}//wesInfo closing
+
+		.questionsLinks {
+			float:left;
+			max-width: 200px;
+			width:50%;
+			overflow: hidden;
+			margin-top: 30px;
+			margin-left: 40px;
+			padding-left: 50px;
+			
+
+			h2 {
+				margin-left: -22px;
+				padding-left: -22px;
+			}	
+		}//questionsLinks closing
+	}//sidebar closing
+
+//footer section	
+
+	footer {
+		margin:0;
+		padding:0;
+		width: 768px;
+		width: 100%;
+		text-align: center;
+
+		.footerNav {
+			float:left;
+			max-width: 768px;
+			width:100%;
+			overflow: hidden;
+			margin-top: 30px;
+			position: relative;
+
+			ul{
+				margin: 0;
+				overflow: hidden;
+				padding: 0;
+				max-width: 768px;
+				width:100%;
+
+				li {
+					margin-left:15%;
+					padding: 0;
+				}
+
+				li:nth-child(1){
+				
+				}
+			}//ul closing
+		}//footerNac closing
+
+		.legal {
+			margin-left:15%;
+			margin-bottom: 5px;
+			text-align: center;
+		}
+	}//footer closing	
+}//max width 768px closing
+
+
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+	.textArea {
+		background-color:white;
+	}
+
+//sidebar
+
+	.sidebar{
+
+//wes bos info
+
+		.wesInfo {
+		max-width: 480px;
+		width:100%;
+		margin-left: 22px;
+		padding: 0;
+		float:left;
+
+			p.link2 {
+				width:100px;
+				margin-left: 90px;
+				padding: 10px;
+			}
+			
+			.asterisk {
+				margin-top: 5px;
+			}
+
+			.quote {
+				margin-top:0;
+				width:400px;
+				padding-left: 0px;
+			}
+
+		}//wes info closing
+
+//questions section
+
+		.questionsLinks {
+			float:left;
+			max-width: 480px;
+			width:100%;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+			
+			h2.questions {
+				margin-top: 10px;
+				margin-left: 22px;
+				padding: 0;
+			}
+			
+			.questionLinks {
+				margin-left: 220px;
+				margin-top: -60px
+			}
+		}//questionsLinks closing
+	}//sidebar closing
+
+	footer {
+		.footerNav ul li {
+			margin-left:13%;
+		} 
+	}
+
+
+}//max 480px section closing
+
+	
+
+
+
+ 
